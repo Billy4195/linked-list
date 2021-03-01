@@ -56,16 +56,18 @@ static void __quicksort(node_t **list, int size)
     left_stk[stk_size] = 0, right_stk[stk_size] = size;
     while (stk_size >= 0) {
         left_idx = left_stk[stk_size];
-        right_idx = right_stk[stk_size] - 1; if (left_idx < right_idx) { pivot = list[left_idx];
+        right_idx = right_stk[stk_size] - 1;
+        if (left_idx < right_idx) {
+            pivot = list[left_idx];
             while (left_idx < right_idx) {
-                while (left_idx < right_idx && list[right_idx]->value >= pivot->value) {
+                while (left_idx < right_idx && list[right_idx]->value >= pivot->value)
                     right_idx--;
-                }
-                if (left_idx < right_idx) list[left_idx++] = list[right_idx];
-                while (left_idx < right_idx && list[left_idx]->value <= pivot->value) {
+                if (left_idx < right_idx)
+                    list[left_idx++] = list[right_idx];
+                while (left_idx < right_idx && list[left_idx]->value <= pivot->value)
                     left_idx++;
-                }
-                if (left_idx < right_idx) list[right_idx--] = list[left_idx];
+                if (left_idx < right_idx)
+                    list[right_idx--] = list[left_idx];
             }
             list[left_idx] = pivot;
             left_stk[stk_size+1] = left_idx+1;
