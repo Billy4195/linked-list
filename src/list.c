@@ -17,7 +17,8 @@ node_t* list_make_node_t(node_t* list, int value)
 }
 
 void list_add_node_t(node_t **list, node_t *node_t)
-{ node_t->next = *list;
+{ 
+    node_t->next = *list;
     *list = node_t;
 }
 
